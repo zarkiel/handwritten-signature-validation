@@ -1,0 +1,14 @@
+@if(results().cropped != ""){
+    <div class="text-center mb-2">
+        <img [src]="results().cropped" class="img-fluid" />
+    </div>
+}
+@if(results().result){
+    <div class="alert alert-success">
+        <p class="mb-0 text-center fw-bold">LA FIRMA ES VÁLIDA</p>
+    </div>
+}@else{
+    <div class="alert alert-danger">
+        <p class="mb-0 text-center fw-bold">LA FIRMA NO ES VÁLIDA</p>
+    </div>
+}

@@ -1,0 +1,41 @@
+<app-page [name]="pageName">
+    <app-page-header [title]="_text.plural" subtitle="Lista de {{ _text.plural.toLocaleLowerCase() }} utilizados en el sistema" breadcrumbs="Configuración del Sistema/General/{{ _text.plural }}" />
+
+    <div class="content__boxed">
+        <div class="content__wrap">
+
+            <div class="card">
+                @if(page().can(_prefix +'_create')){
+                <div class="card-header">
+                    <div class="row">
+
+                        <div class="col-md-12 d-flex gap-1 align-items-center mb-12">
+                            <button class="btn btn-primary hstack gap-2" (click)="openFormNew()">
+                                <i class="demo-psi-add fs-5"></i>
+                                <span class="vr"></span>
+                                Registrar Nuevo
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                }
+
+                <div class="card-body">
+                    @if(page().can(_prefix +'_read')){
+                        <ag-grid-angular 
+                            style="width: 100%; height: 600px" 
+                            class="ag-theme-alpine" 
+                            [rowHeight]="50"
+                            [gridOptions]="gridOptions" 
+                            [columnDefs]="columnDefs" 
+                            (gridReady)="onGridReady($event)"
+                            [getContextMenuItems]="getContextMenuItems"
+                            [context]="context"  />
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</app-page>

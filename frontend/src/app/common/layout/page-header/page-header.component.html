@@ -1,0 +1,22 @@
+<div class="content__header content__boxed overlapping">
+    <div class="content__wrap">
+
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                @for(item of getBreadcrumbs(); track item; let index = $index){
+                    <li class="breadcrumb-item" [ngClass]="{'active': $last}">{{ item }}</li>
+                }
+
+            </ol>
+        </nav>
+        <!-- END : Breadcrumb -->
+
+
+        <h1 class="page-title mb-0 mt-2">{{ title }}</h1>
+
+        <p class="lead">
+            {{ subtitle}}
+        </p>
+    </div>
+</div>

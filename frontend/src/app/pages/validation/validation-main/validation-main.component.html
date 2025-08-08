@@ -1,0 +1,83 @@
+<app-page [name]="pageName">
+    <app-page-header title="Validación" subtitle="Validación de Firmas" breadcrumbs="Validación/Validación de Firmas" />
+
+    <div class="content__boxed">
+        <div class="content__wrap">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card border-1 border-primary mt-3">
+                                <h5 class="card-header text-bg-primary">Firmas de Referencia</h5>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label for="customer" class="form-label">Cliente</label>
+                                        <p-select [options]="customers()" [filter]="true" [showClear]="true" dataKey="id" optionLabel="fullname" placeholder="-- Seleccione --" class="w-100" (onChange)="selectCustomer($event)" />
+                                    </div>
+                                    
+                                    <button class="btn btn-sm btn-success hstack gap-2" type="button" (click)="selectImage('images')">
+                                        <i class="demo-psi-add fs-5"></i>
+                                        <span class="vr"></span>
+                                        Agregar Imagen de Firma
+                                    </button>
+        
+                                    @if(images().length > 0){
+                                    <div class="gallery">
+        
+                                        @for(image of images(); track image; let index = $index){
+                                        <div class="photo-container" data-id="1">
+                                            <img [src]="image" class="img-lg photo">
+                                            <button class="delete-btn" title="Eliminar foto" type="button" (click)="removeImage(index)">×</button>
+                                        </div>
+                                        }
+                                    </div>
+                                    }@else {
+                                    <p class="text-center">No ha seleccionado ninguna imagen</p>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="card border-1 border-info mt-3">
+                                <h5 class="card-header text-bg-info">Parámetros</h5>
+                                <div class="card-body">
+                                    <div>
+                                        <label for="type" class="form-label">Tipo de Firma</label>
+                                        <select id="type" class="form-select" [(ngModel)]="imageType">
+                                            <option value="document">Documento</option>
+                                            <option value="signature_only">Firma Única</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-md-6">
+                            <div class="card border-1 border-dark mt-3">
+                                <h5 class="card-header text-bg-dark">Firma a Validar</h5>
+                                <div class="card-body">
+                                    <button class="btn btn-sm btn-success hstack gap-2" type="button" (click)="selectImage('imageToVerify')">
+                                        <i class="demo-psi-add fs-5"></i>
+                                        <span class="vr"></span>
+                                        Seleccionar Firma a Validar
+                                    </button>
+        
+                                    <div class="mt-1 text-center">
+                                        @if(imageToVerify() != ""){
+                                        <img [src]="imageToVerify()" class="image-to-verify">
+                                        }@else {
+                                        <p class="text-center">No ha seleccionado ninguna imagen</p>
+                                        }
+                                    </div>
+        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-lg w-100 mt-3" (click)="validateSignature()">Validar Firma</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</app-page>

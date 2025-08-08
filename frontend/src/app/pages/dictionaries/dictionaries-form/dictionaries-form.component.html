@@ -1,0 +1,17 @@
+<app-page [name]="pageName" operation="{{_prefix}}">
+    <form [formGroup]="form" (ngSubmit)="sendForm()">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row g-3">
+                    <app-form-group label="Nombre" name="name" class="col-12" />
+                    <app-form-group label="Descripción" name="description" class="col-12" type="textarea" />
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-default me-1" (click)="closeModal()" type="button">Cancelar</button>
+                <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Guardar Datos</button>
+            </div>
+        </div>
+    </form>
+</app-page>

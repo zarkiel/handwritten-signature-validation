@@ -1,0 +1,139 @@
+<!-- PAGE CONTAINER -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div id="root" class="root front-container" [style.background-image]="`url(${activeBackground()})`">
+
+    <!-- CONTENTS -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <section id="content" class="content">
+        <div class="content__boxed w-100 min-vh-100 d-flex flex-column align-items-center justify-content-center">
+            <div class="content__wrap">
+
+                <!-- Login card -->
+                <div class="card shadow-lg login-container">
+                    <div class="card-body p-4">
+
+                        <div class="text-center">
+                            <h1 class="h3">Inicio de Sesión</h1>
+                            <p>Ingresa a tu cuenta</p>
+
+                        </div>
+
+                        <form class="mt-4" [formGroup]="form" (ngSubmit)="sendForm()">
+
+                            <div class="mb-3">
+                                <input type="text" class="form-control" formControlName="username" placeholder="Nombre de Usuario" autofocus>
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="password" class="form-control" formControlName="password" placeholder="Contraseña">
+                            </div>
+
+                            <div class="form-check">
+                                <input id="_dm-loginCheck" class="form-check-input" type="checkbox">
+                                <label for="_dm-loginCheck" class="form-check-label">
+                                    Recordarme
+                                </label>
+                            </div>
+
+                            <div class="d-grid mt-4">
+                                <button class="btn btn-primary btn-lg" type="submit">Iniciar Sesión</button>
+                            </div>
+                        </form>
+
+                        <div class="d-flex justify-content-between gap-md-5 mt-4">
+                            <a href="javascript:;" class="btn-link text-decoration-none">¿Olvidó su contraseña?</a>
+                            <!-- <a href="../../front-pages/register/" class="btn-link text-decoration-none display-none">Create a new account</a> -->
+                        </div>
+
+                        <!-- <div class="d-flex align-items-center justify-content-between border-top pt-3 mt-3">
+                            <h5 class="m-0">Login with</h5>
+
+
+                            <div class="ms-3">
+                                <a href="javascript:;" class="btn btn-sm btn-icon btn-hover btn-primary text-inherit">
+                                    <i class="demo-psi-facebook fs-5"></i>
+                                </a>
+                                <a href="javascript:;" class="btn btn-sm btn-icon btn-hover btn-info text-inherit">
+                                    <i class="demo-psi-twitter fs-5"></i>
+                                </a>
+                                <a href="javascript:;" class="btn btn-sm btn-icon btn-hover btn-danger text-inherit">
+                                    <i class="demo-psi-google-plus fs-5"></i>
+                                </a>
+                                <a href="javascript:;" class="btn btn-sm btn-icon btn-hover btn-warning text-inherit">
+                                    <i class="demo-psi-instagram fs-5"></i>
+                                </a>
+                            </div>
+
+
+                        </div> -->
+
+
+                    </div>
+                </div>
+
+                <!-- END : Login card -->
+
+
+                <!-- Show the background images container -->
+                <div class="d-flex align-items-center justify-content-center gap-3 mt-4">
+                    <button class="btn btn-danger hstack gap-2" data-bs-toggle="offcanvas" data-bs-target="#_dm-boxedBgContent">
+                        <i class=" demo-psi-photos fs-4"></i>
+                        <span class="vr"></span>
+                        Imagen de Fondo
+                    </button>
+                    <!-- <button class="btn btn-light" onclick="window.history.back()">Back</button> -->
+                </div>
+                <!-- END : Show the background images container -->
+
+
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- END - CONTENTS -->
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- END - PAGE CONTAINER -->
+
+
+<!-- BOXED LAYOUT : BACKGROUND IMAGES CONTENT [ DEMO ] -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div id="_dm-boxedBgContent" class="_dm-boxbg offcanvas offcanvas-bottom" data-bs-scroll="true" tabindex="-1">
+    <div class="offcanvas-body px-4">
+
+        <!-- Content Header -->
+        <div class="offcanvas-header border-bottom p-0 pb-3">
+            <div>
+                <h4 class="offcanvas-title">Imágenes de Fondo</h4>
+                <span class="text-body-secondary">Selecciona una imagen para cambiar el fondo</span>
+            </div>
+            <button type="button" class="btn-close btn-lg text-reset shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <!-- End - Content header -->
+
+
+        <!-- Collection Of Images -->
+        <div id="_dm-boxedBgContainer" class="row mt-3">
+            @for(category of backgrounds; track category){
+            <div class="col-lg-4">
+                <h5 class="mb-2">{{ category.title }}</h5>
+                <div class="_dm-boxbg__img-container d-flex flex-wrap">
+                    @for(item of category.items; track item){
+                    <a href="javascript:;" class="_dm-boxbg__thumb ratio ratio-16x9" [ngClass]="{'active': isBackgroundActive(category.key, item)}">
+                        <img class="img-responsive" src="/premium/boxed-bg/{{ category.key }}/thumbs/{{ item }}.jpg" (click)="setActiveBackground(category.key, item)" alt="Imgen de Fondo" loading="lazy">
+                    </a>
+                    }
+                </div>
+            </div>
+            }
+
+
+        </div>
+        <!-- End - Collection Of Images -->
+
+
+    </div>
+</div>

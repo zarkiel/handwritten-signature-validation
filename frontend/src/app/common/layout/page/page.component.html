@@ -1,0 +1,7 @@
+<!-- @if(getPage() && (operation == "" || getPage()?.can(operation))){
+    <ng-content></ng-content>
+}@else {
+    <app-error-page code="403" summary="No Autorizado" details="No está autorizado para ver esta página"></app-error-page>
+} -->
+
+<ng-content></ng-content>

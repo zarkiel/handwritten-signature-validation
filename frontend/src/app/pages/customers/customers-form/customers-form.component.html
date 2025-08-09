@@ -1,5 +1,5 @@
 <app-page [name]="pageName">
-    <app-page-header title="Cliente" subtitle="Ficha de Cliente" breadcrumbs="Clientes/Ficha de Cliente" />
+    <app-page-header title="Customer" subtitle="Customer Form" breadcrumbs="Customers/Customer Form" />
     <div class="content__boxed">
         <div class="content__wrap">
             <div class="card">
@@ -8,16 +8,16 @@
                         <div class="modal-content modal-800">
                             <div class="modal-body">
                                 <div class="card border-1 border-primary">
-                                    <h5 class="card-header text-bg-primary">Datos Personales</h5>
+                                    <h5 class="card-header text-bg-primary">Personal Data</h5>
                                     <div class="card-body">
                                         <div class="row g-3">
-                                            <app-form-group label="Tipo de Documento" name="document_type" class="col-md-6 col-lg-4">
+                                            <app-form-group label="Document Type" name="document_type" class="col-md-6 col-lg-4">
                                                 <p-select formControlName="document_type" [options]="documentTypes()?.data" [filter]="true" [showClear]="true" dataKey="id" optionLabel="name" placeholder="-- Seleccione --" class="w-100" />
                                             </app-form-group>
-                                            <app-form-group label="Nº de Documento" name="document_number" class="col-md-6 col-lg-4" />
-                                            <app-form-group label="Nombres" name="name" class="col-md-6 col-lg-4" />
-                                            <app-form-group label="Primer Apellido" name="lastname1" class="col-md-6 col-lg-4" />
-                                            <app-form-group label="Segundo Apellido" name="lastname2" class="col-md-6 col-lg-4" />
+                                            <app-form-group label="Document Number" name="document_number" class="col-md-6 col-lg-4" />
+                                            <app-form-group label="Names" name="name" class="col-md-6 col-lg-4" />
+                                            <app-form-group label="First Lastname" name="lastname1" class="col-md-6 col-lg-4" />
+                                            <app-form-group label="Second Lastname" name="lastname2" class="col-md-6 col-lg-4" />
 
 
 
@@ -34,12 +34,12 @@
                                 </div>
 
                                 <div class="card border-1 border-primary mt-3">
-                                    <h5 class="card-header text-bg-primary">Firmas de Referencia</h5>
+                                    <h5 class="card-header text-bg-primary">Reference Signatures</h5>
                                     <div class="card-body">
                                         <button class="btn btn-sm btn-primary hstack gap-2" type="button" (click)="selectImage()">
                                             <i class="demo-psi-add fs-5"></i>
                                             <span class="vr"></span>
-                                            Agregar Imagen de Firma
+                                            Add Signature Image
                                         </button>
 
                                         @if(images().length > 0){
@@ -48,20 +48,20 @@
                                             @for(image of images(); track image; let index = $index){
                                             <div class="photo-container" data-id="1">
                                                 <img [src]="image.data" class="img-lg photo">
-                                                <button class="delete-btn" title="Eliminar foto" type="button" (click)="removeImage(index)">×</button>
+                                                <button class="delete-btn" title="Delete image" type="button" (click)="removeImage(index)">×</button>
                                             </div>
                                             }
                                         </div>
                                         }@else {
-                                        <p class="text-center">No ha seleccionado ninguna imagen</p>
+                                        <p class="text-center">No selected any image</p>
                                         }
                                     </div>
                                 </div>
                             </div>
 
                             <div class="modal-footer">
-                                <button class="btn btn-default me-1" (click)="closeModal()" type="button">Cancelar</button>
-                                <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Guardar Datos</button>
+                                <button class="btn btn-default me-1" (click)="closeModal()" type="button">Cancel</button>
+                                <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Save Data</button>
                             </div>
                         </div>
                     </form>

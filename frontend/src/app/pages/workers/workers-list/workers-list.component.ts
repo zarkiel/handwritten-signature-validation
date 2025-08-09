@@ -36,10 +36,10 @@ export class WorkersListComponent {
                 return '<div class="text-center mt-1 mb-1"><img src="' + params.value + '" class="mainnav__avatar img-sm rounded-circle hv-oc" /></div>'
             }, filter: false, sortable: false
         },
-        { field: 'name', headerName: 'Nombres' },
-        { field: 'lastname1', headerName: 'Primer Apellido' },
-        { field: 'lastname2', headerName: 'Segundo Apellido' },
-        { field: 'document_number', headerName: 'Nº de Documento' },
+        { field: 'name', headerName: 'Names' },
+        { field: 'lastname1', headerName: 'First Lastname' },
+        { field: 'lastname2', headerName: 'Second Lastname' },
+        { field: 'document_number', headerName: 'Document Number' },
         
         AG_GRID_OPTIONS_BUTTON//{ field: '_menu', headerName: '', width: 50, cellRenderer: AggridOptionsButtonComponent}
     ];
@@ -108,9 +108,9 @@ export class WorkersListComponent {
 
 
     delete(worker: Worker) {
-        this.uiService.confirm('¿Está seguro de borrar el registro?', () => {
+        this.uiService.confirm('Are you sure you want to delete the record?', () => {
             this.workerService.deleteRecord(worker).subscribe(res => {
-                this.messageService.add({ severity: "success", summary: "Operación Exitosa", detail: "Registro borrado con éxito" })
+                this.messageService.add({ severity: "success", summary: "Operation Successful", detail: "Record deleted successfully" })
                 this.gridApi.refreshServerSide()
             })
         })
@@ -127,7 +127,7 @@ export class WorkersListComponent {
 
           
             options.push({
-                name: 'Editar Usuario',
+                name: 'Edit User',
                 action: () => {
                     _this.openForm(item)
                 },
@@ -139,7 +139,7 @@ export class WorkersListComponent {
 
         
             options.push({
-                name: 'Borrar Usuario',
+                name: 'Delete User',
                 action: () => {
                     _this.delete(item)
                 },

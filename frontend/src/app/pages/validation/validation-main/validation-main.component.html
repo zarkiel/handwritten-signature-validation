@@ -1,5 +1,5 @@
 <app-page [name]="pageName">
-    <app-page-header title="Validación" subtitle="Validación de Firmas" breadcrumbs="Validación/Validación de Firmas" />
+    <app-page-header title="Validation" subtitle="Signature Validation" breadcrumbs="Validation/Signature Validation" />
 
     <div class="content__boxed">
         <div class="content__wrap">
@@ -8,17 +8,17 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card border-1 border-primary mt-3">
-                                <h5 class="card-header text-bg-primary">Firmas de Referencia</h5>
+                                <h5 class="card-header text-bg-primary">Reference Signatures</h5>
                                 <div class="card-body">
                                     <div class="mb-3">
-                                        <label for="customer" class="form-label">Cliente</label>
+                                        <label for="customer" class="form-label">Customer</label>
                                         <p-select [options]="customers()" [filter]="true" [showClear]="true" dataKey="id" optionLabel="fullname" placeholder="-- Seleccione --" class="w-100" (onChange)="selectCustomer($event)" />
                                     </div>
                                     
                                     <button class="btn btn-sm btn-success hstack gap-2" type="button" (click)="selectImage('images')">
                                         <i class="demo-psi-add fs-5"></i>
                                         <span class="vr"></span>
-                                        Agregar Imagen de Firma
+                                        Add Signature Image
                                     </button>
         
                                     @if(images().length > 0){
@@ -32,19 +32,19 @@
                                         }
                                     </div>
                                     }@else {
-                                    <p class="text-center">No ha seleccionado ninguna imagen</p>
+                                    <p class="text-center">No selected any image</p>
                                     }
                                 </div>
                             </div>
 
                             <div class="card border-1 border-info mt-3">
-                                <h5 class="card-header text-bg-info">Parámetros</h5>
+                                <h5 class="card-header text-bg-info">Parameters</h5>
                                 <div class="card-body">
                                     <div>
-                                        <label for="type" class="form-label">Tipo de Firma</label>
+                                        <label for="type" class="form-label">Signature Type</label>
                                         <select id="type" class="form-select" [(ngModel)]="imageType">
-                                            <option value="document">Documento</option>
-                                            <option value="signature_only">Firma Única</option>
+                                            <option value="document">Document</option>
+                                            <option value="signature_only">Single Signature</option>
                                         </select>
                                     </div>
                                 </div>
@@ -53,19 +53,19 @@
         
                         <div class="col-md-6">
                             <div class="card border-1 border-dark mt-3">
-                                <h5 class="card-header text-bg-dark">Firma a Validar</h5>
+                                <h5 class="card-header text-bg-dark">Signature to Validate</h5>
                                 <div class="card-body">
                                     <button class="btn btn-sm btn-success hstack gap-2" type="button" (click)="selectImage('imageToVerify')">
                                         <i class="demo-psi-add fs-5"></i>
                                         <span class="vr"></span>
-                                        Seleccionar Firma a Validar
+                                        Select Signature to Validate
                                     </button>
         
                                     <div class="mt-1 text-center">
                                         @if(imageToVerify() != ""){
                                         <img [src]="imageToVerify()" class="image-to-verify">
                                         }@else {
-                                        <p class="text-center">No ha seleccionado ninguna imagen</p>
+                                        <p class="text-center">No selected any image</p>
                                         }
                                     </div>
         
@@ -74,7 +74,7 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-primary btn-lg w-100 mt-3" (click)="validateSignature()">Validar Firma</button>
+                    <button class="btn btn-primary btn-lg w-100 mt-3" (click)="validateSignature()">Validate Signature</button>
                 </div>
             </div>
 

@@ -29,11 +29,11 @@ export class CustomersListComponent {
     gridOptions: GridOptions = { ...AG_GRID_OPTIONS };
     columnDefs: ColDef[] = [
         //{ field: 'id', headerName: 'ID' },
-        { field: 'name', headerName: 'Nombres' },
-        { field: 'lastname1', headerName: 'Primer Apellido' },
-        { field: 'lastname2', headerName: 'Segundo Apellido' },
-        { field: 'document_type.name', headerName: 'Tipo de Documento' },
-        { field: 'document_number', headerName: 'Número de Documento' },
+        { field: 'name', headerName: 'Names' },
+        { field: 'lastname1', headerName: 'First Lastname' },
+        { field: 'lastname2', headerName: 'Second Lastname' },
+        { field: 'document_type.name', headerName: 'Document Type' },
+        { field: 'document_number', headerName: 'Document Number' },
         AG_GRID_OPTIONS_BUTTON
     ];
     context: any;
@@ -100,9 +100,9 @@ export class CustomersListComponent {
 
 
     delete(customer: Customer) {
-        this.uiService.confirm('¿Está seguro de borrar el registro?', () => {
+        this.uiService.confirm('Are you sure you want to delete the record?', () => {
             this.customerService.deleteRecord(customer).subscribe(res => {
-                this.messageService.add({ severity: "success", summary: "Operación Exitosa", detail: "Registro borrado con éxito" })
+                this.messageService.add({ severity: "success", summary: "Operation Successful", detail: "Record deleted successfully" })
                 this.gridApi.refreshServerSide()
             })
         })
@@ -120,7 +120,7 @@ export class CustomersListComponent {
             if (page.can('update')) {
 
                 options.push({
-                    name: 'Editar Cliente',
+                    name: 'Edit Customer',
                     action: () => {
                         _this.openForm(item)
                     },
@@ -132,7 +132,7 @@ export class CustomersListComponent {
 
             if (page.can('delete')){
                 options.push({
-                    name: 'Borrar Cliente',
+                    name: 'Delete Customer',
                     action: () => {
                         _this.delete(item)
                     },

@@ -22,9 +22,16 @@ Set up the database:
 rails db:create
 rails db:migrate
 ```
+
+If you have any issues with the database, just restore the file: **db/structure.sql**
+
 Start the server:
 ```
 rails s
 ```
 
 The API will be available at http://localhost:3000.
+
+On the frontend side you will access with the following credentials:
+- User: admin
+- Password: admin

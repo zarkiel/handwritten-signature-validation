@@ -38,6 +38,13 @@ This repository presents the implementation of a Siamese Convolutional Neural Ne
     ```
 
 #### Training
+
+All the necessary configurations and training logic are defined within the train.py file. To begin the training process, simply execute this script from your terminal:
+```
+python train.py
+```
+**Note:** We highly recommend reviewing the parameters and configurations inside train.py (such as learning rate, batch size, and dataset paths) before running the script to ensure it meets your specific needs.
+
 Leveraging Colab and the Keras/TensorFlow ecosystem, the model was trained and reached a **96.53%** training accuracy. It is anticipated that higher performance can be attained by increasing the dataset size through data augmentation.
 
 #### Loss Function
@@ -49,3 +56,21 @@ def contrastive_loss(y_true, y_pred):
     return K.mean(y_true * K.square(y_pred) +
                 (1 - y_true) * K.square(K.maximum(margin - y_pred, 0)))
 ```
+
+### Running the Validation API
+
+After successfully training your model and saving the weights, you can start the validation API by running the server.py script. This script will load the trained model and expose an endpoint for signature verification.
+
+To prepare the server, you first need to specify the path to your trained model file. Open the server.py file and update the MODEL_PATH variable with the correct file path:
+```
+# server.py
+
+MODEL_PATH = "/path/to/your/trained_model.keras"
+
+# ... rest of the code
+```
+
+Once you have updated the file, you can launch the server from your terminal:
+````
+python server.py
+````

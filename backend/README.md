@@ -1,20 +1,30 @@
 # Signature Validation - Backend
 
-* Ruby version: 3.3+
+### Prerequisites
+Before you begin, ensure you have the following installed on your system:
 
-* System dependencies
-    * Ruby
-    * Rails
+* Ruby: 3.3.4+
+* Rails: 8.0+
+* Database: MySQL
 
-* Configuration
-    * Setup database at **config/database.yml**
+### Installation
+Follow these steps to get the project up and running locally:
 
-* Database creation
+Install the required gems:
 
-    Create database schema by running migrations.
-    ```
-    rails db:migrate
-    ```
+```
+bundle install
+```
 
+Set up the database:
+```
+# Create the database and run migrations
+rails db:create
+rails db:migrate
+```
+Start the server:
+```
+rails s
+```
 
-
+The API will be available at http://localhost:3000.
